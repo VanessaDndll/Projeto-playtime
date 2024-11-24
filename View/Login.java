@@ -4,6 +4,13 @@
  */
 package View;
 
+import java.sql.*;
+import Controller.DAO;
+import Model.Chamado;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Adriano
@@ -51,6 +58,11 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("Senha:");
 
         jButton1.setText("Autenticar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -102,6 +114,30 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String user = jUserLogin.getText();
+        String senha = new String(jSenhaLogin.getText()); // Supondo que jSenha seja um JPasswordField
+    
+        DAO dao = new DAO();
+
+        try {
+            if (dao.login(user, senha)) {
+                JOptionPane.showMessageDialog(this, "Login bem-sucedido!");
+            
+                Area_gerente area_gerente = new Area_gerente();
+                area_gerente.setVisible(true);
+            
+                this.dispose();
+            
+            } else {
+            JOptionPane.showMessageDialog(this, "Usuário ou senha inválidos.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao realizar login: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -10,6 +10,8 @@ package Model;
  */
 public class Chamado {
     private int id_cargo;
+    private String nome_cargo;
+    
     private int id_categoria;
     
     //funcionario
@@ -56,6 +58,14 @@ public class Chamado {
         this.id_funcionario = id_funcionario;
     }
 
+    public String getNome_cargo() {
+        return nome_cargo;
+    }
+
+    public void setNome_cargo(String nome_cargo) {
+        this.nome_cargo = nome_cargo;
+    }
+    
     public String getUser_funcionario() {
         return user_funcionario;
     }

@@ -5,6 +5,7 @@
 package one;
 
 import View.Singin;
+import View.Login;
 
 /**
  *
@@ -16,8 +17,11 @@ public class ONE {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Singin telaSingin = new Singin();
-        telaSingin.setVisible(true);
+        Login telaLogin = new Login();
+        telaLogin.setVisible(true);
+        
+       // Singin telaSingin = new Singin();
+       // telaSingin.setVisible(true);
     }
     
 }
